@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - ToDo App</title>
+    <style>
+        /* Registration Specific Styles (Uses the same styles as login.html for consistency) */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+            background-color: #001f3f; /* Navy Blue Background */
+        }
+        .register-container { 
+            background: rgb(64, 128, 128); 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            width: 350px; 
+            text-align: center;
+        }
+        h1 { 
+            color: #39CCCC; /* Teal Heading */
+            margin-bottom: 20px; 
+        }
+        label { 
+            display: block; 
+            text-align: left;
+            margin-top: 15px; 
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 5px;
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box;
+        }
+        button { 
+            background-color: #39CCCC; /* Teal Button for Register */
+            color: white; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2da1a1;
+        }
+        .error { 
+            color: #ff6347; 
+            background-color: #ffe0db;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px; 
+        }
+        .login-link { 
+            display: block; 
+            margin-top: 20px; 
+            color: #001f3f; /* Navy Blue Link */
+            text-decoration: none;
+        }
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Create Account</h1>
+        
+        <div th:if="${error}" class="error">
+            <span th:text="${error}">Username already exists!</span>
+        </div>
+
+        <form method="POST" th:action="@{/register}" th:object="${user}">
+            <label for="username">Choose Username</label>
+            <input type="text" id="username" th:field="*{username}" required>
+            
+            <label for="password">Choose Password</label>
+            <input type="password" id="password" th:field="*{password}" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <a th:href="@{/login}" class="login-link">Already have an account? Login here</a>
+    </div>
+</body>
+</html>

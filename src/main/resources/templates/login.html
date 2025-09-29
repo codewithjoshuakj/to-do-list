@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - ToDo App</title>
+    <style>
+        /* Login/Register Specific Styles */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+            background-color: rgb(255, 0, 0);        /* Navy Blue Background */
+        }
+        .login-container { 
+            background: rgb(128, 255, 128); 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            width: 350px; 
+            text-align: center;
+        }
+        h1 { 
+            color: #39CCCC; /* Teal Heading */
+            margin-bottom: 20px; 
+        }
+        label { 
+            display: block; 
+            text-align: left;
+            margin-top: 15px; 
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 5px;
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box;
+        }
+        button { 
+            background-color: #001f3f; /* Navy Blue Button */
+            color: white; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #00152b;
+        }
+        .error { 
+            color: #ff6347; /* Tomato Red Error */
+            background-color: #ffe0db;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px; 
+        }
+        .message { 
+            color: green; 
+            background-color: #e6ffe6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px; 
+        }
+        .register-link { 
+            display: block; 
+            margin-top: 20px; 
+            color: #39CCCC; 
+            text-decoration: none;
+        }
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        
+        <div th:if="${param.error}" class="error">
+            Invalid username or password.
+        </div>
+        
+        <div th:if="${param.logout}" class="message">
+            You have been logged out successfully.
+        </div>
+
+        <form method="POST" th:action="@{/login}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign In</button>
+        </form>
+        
+        <a th:href="@{/register}" class="register-link">Need an account? Register here</a>
+    </div>
+</body>
+</html>
