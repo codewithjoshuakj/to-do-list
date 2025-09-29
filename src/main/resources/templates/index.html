@@ -4,151 +4,152 @@
     <meta charset="UTF-8">
     <title>My Secure To-Do List</title>
     <style>
-        /* Color Palette: Navy (#001f3f), Teal (#39CCCC), Light Gray (#f8f8f8) */
-        body { 
-            font-family: 'Arial', sans-serif; 
-            margin: 0; 
-            padding: 30px; 
-            background-color: rgb(192, 192, 192);
-            color: #333;
-        }
-        /* MAIN HEADER & WELCOME MESSAGE */
-        .app-header {
-            background-color: #001f3f; /* Navy Blue */
-            color: white;
-            padding: 15px 30px;
-            margin: -30px -30px 30px -30px; /* Extends to edges */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .welcome-user {
-            font-size: 1.1em;
-            margin: 0;
-            font-weight: 300;
-        }
-        .welcome-user strong {
-            font-weight: 600;
-            color: #39CCCC; /* Teal */
-        }
-        h1 { 
-            color: white;
-            font-size: 28px;
-            margin: 0;
-        }
-        
-        /* TASK INPUT FORM */
-        .task-form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        input[type="text"] { 
-            padding: 12px; 
-            width: 70%; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        button { 
-            padding: 10px 20px; 
-            cursor: pointer; 
-            border: none; 
-            border-radius: 5px; 
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .add-btn {
-            background-color: #39CCCC; /* Teal */
-            color: white;
-        }
-        .add-btn:hover {
-            background-color: #2da1a1;
-        }
-        
-        /* LOGOUT & FILTER CONTROLS */
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .logout-btn {
-            background-color: #ff6347; /* Tomato Red */
-            color: white;
-        }
-        .logout-btn:hover {
-            background-color: #e55338;
-        }
+    /* Color Palette: Violet (#6a0dad), Green (#28a745), Light Gray (#f8f8f8) */
+    body { 
+        font-family: 'Arial', sans-serif; 
+        margin: 0; 
+        padding: 30px; 
+        background-color: rgb(240, 240, 240);
+        color: #333;
+    }
 
-        /* FILTER BUTTON STYLES */
-        .filter-controls a {
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin-right: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        .filter-active {
-            background-color: #39CCCC; /* Teal */
-            color: white !important;
-        }
-        .filter-inactive {
-            background-color: #eee;
-            color: #555;
-            border: 1px solid #ccc;
-        }
-        .filter-inactive:hover {
-            background-color: #ddd;
-        }
+    /* MAIN HEADER & WELCOME MESSAGE */
+    .app-header {
+        background-color: #6a0dad; /* Violet */
+        color: white;
+        padding: 15px 30px;
+        margin: -30px -30px 30px -30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .welcome-user {
+        font-size: 1.1em;
+        margin: 0;
+        font-weight: 300;
+    }
+    .welcome-user strong {
+        font-weight: 600;
+        color: #28a745; /* Green */
+    }
+    h1 { 
+        color: white;
+        font-size: 28px;
+        margin: 0;
+    }
+    
+    /* TASK INPUT FORM */
+    .task-form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+    input[type="text"] { 
+        padding: 12px; 
+        width: 70%; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    button { 
+        padding: 10px 20px; 
+        cursor: pointer; 
+        border: none; 
+        border-radius: 5px; 
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .add-btn {
+        background-color: #28a745; /* Green */
+        color: white;
+    }
+    .add-btn:hover {
+        background-color: #218838;
+    }
+    
+    /* LOGOUT & FILTER CONTROLS */
+    .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .logout-btn {
+        background-color: #dc3545; /* Red */
+        color: white;
+    }
+    .logout-btn:hover {
+        background-color: #b52a36;
+    }
 
-        /* TABLE STYLING */
-        table { 
-            border-collapse: collapse; 
-            width: 100%; 
-            margin-top: 20px; 
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        th, td { 
-            padding: 12px 15px; 
-            text-align: left; 
-            border-bottom: 1px solid #eee; 
-        }
-        th { 
-            background-color: #001f3f; 
-            color: white;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        .status-done {
-            color: green;
-            font-weight: bold;
-        }
-        .status-pending {
-            color: orange;
-            font-weight: bold;
-        }
-        td a {
-            color: #001f3f; 
-            text-decoration: none;
-            margin-right: 10px;
-            transition: color 0.3s;
-        }
-        td a:hover {
-            color: #39CCCC; 
-            text-decoration: underline;
-        }
-    </style>
+    /* FILTER BUTTON STYLES */
+    .filter-controls a {
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+    .filter-active {
+        background-color: #28a745; /* Green */
+        color: white !important;
+    }
+    .filter-inactive {
+        background-color: #eee;
+        color: #555;
+        border: 1px solid #ccc;
+    }
+    .filter-inactive:hover {
+        background-color: #ddd;
+    }
+
+    /* TABLE STYLING */
+    table { 
+        border-collapse: collapse; 
+        width: 100%; 
+        margin-top: 20px; 
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    th, td { 
+        padding: 12px 15px; 
+        text-align: left; 
+        border-bottom: 1px solid #eee; 
+    }
+    th { 
+        background-color: #6a0dad; /* Violet */
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    .status-done {
+        color: #28a745; /* Green */
+        font-weight: bold;
+    }
+    .status-pending {
+        color: #ff9800; /* Orange */
+        font-weight: bold;
+    }
+    td a {
+        color: #6a0dad; 
+        text-decoration: none;
+        margin-right: 10px;
+        transition: color 0.3s;
+    }
+    td a:hover {
+        color: #28a745; 
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
     
